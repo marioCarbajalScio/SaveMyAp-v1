@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import Home from './Home';
 import Header from './header/header.js';
 import Footer from './footer/footer.js'
-import './home.css';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
@@ -19,7 +18,9 @@ class Questions extends Component{
             nextPage:1,
             value:0,
             previusVal:0,
-            valores:[0,0,0,0,0,0,0,0,0,0,0]
+            valores:[0,0,0,0,0,0,0,0,0,0,0],
+            questions: [],
+            loading: true,
         };
     }
 
@@ -43,188 +44,769 @@ class Questions extends Component{
         this.setState({nextPage:n})
     }
 
+    //added API func
+    componentDidMount(){
+        fetch('http://10.16.0.64:9999')
+        .then(res => res.json())
+        .then((data) => {
+            this.setState({questions:data, loading:false})
+        })
+        .catch(console.log)
+    }
 
     render(){
         if(this.state.nextPage===1){
+            //Question #1
             return(
                 <div>
-                    <Header></Header>
-                    <Footer></Footer>
+                     <Header></Header>
+                    {!this.state.loading &&
+                <div>
                     <Container className="themed-container" fluid={true}>
-                    <div className="body">
-                        <Row>
-                            <Col sm="0" md="4">
-                            </Col>
-                            <Col sm="6" md="4">
-                            <h1 className="body-title">What kind of app are you looking for ?</h1>
-                            </Col>
-                            <Col sm="6" md="4">
-                            <header className="header-text">Question {this.state.nextPage} of 10</header>
+                    <div>
+                        <Row> 
+                            <Col md="12"> 
+                            <header className="header-text-questions"> Question {this.state.nextPage} of 10</header>
+                            <h1 className="body-title">{this.state.questions[0].content}</h1>
                             </Col>
                         </Row>
 
                     <Row>
-                        <Col md="3"></Col>
-                        <Col md="1">
-                        <Button variant="primary" size="lg" onClick={(Event)=>(this.sum(32000))}>Web App</Button>
+                        <Col md="2"></Col>
+                        <Col  md="8">
+                            <Row>
+                                <Col md="12">
+                                    <Row>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[0].value))}>{this.state.questions[0].answers[0].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[1].value))}>{this.state.questions[0].answers[1].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[2].value))}>{this.state.questions[0].answers[2].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.state.questions[0].answers[2].value)}>{this.state.questions[0].answers[2].content}</button>
+                                    </div>
+                                    </Col>
+                                    </Row>
+                                    
+                                </Col>
+
+                            </Row>
                         </Col>
-                        <Col  md="1">
-                        <Button variant="primary" size="lg" onClick={(Event)=>(this.sum(32000))}>Web App</Button>
-                        </Col>
-                        <Col sm="12" md="1">
-                        <Button variant="primary" size="lg" onClick={(Event)=>(this.sum(24000))}>iOS</Button>
-                        </Col>
-                        <Col sm="12" md="1">
-                        <Button variant="primary" size="lg" onClick={(Event)=>(this.sum(24000))}>Android</Button>
-                        </Col>
-                        <Col sm="12" md="1">
-                        <Button variant="primary" size="lg" onClick={(Event)=>(this.sum(40000))}>Android/iOS</Button>
-                        </Col>
-                        <Col md="4"></Col>
+                        <Col md="2"></Col>
+
                     </Row>
-                    <Link to="/" >Back</Link>
+
+                    <Row>
+                        <Col md="2"></Col>
+                        <Col md="8">
+                        <div className="back-btn-cont">
+                        <center><Link to="/" ><button className="back-btn">Back</button></Link></center>
+                        </div>
+                        </Col>
+                        <Col md="2"></Col>
+
+                    </Row>
 
                     <br></br> 
                     {this.state.value}
                     </div>
                     </Container>
 
+                    <style>
+                    @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+                    </style>
+                    </div>}
                 </div>
             );
+
+            // question #2
         }else if(this.state.nextPage===2){
             return(
-                <div >
-                        <Header></Header>
-                        <Footer></Footer>
-                        <header>Page {this.state.nextPage} of 10</header>
-                        <h1>2.Does your app needs a login?</h1> <Link onClick={(Event)=>(this.rest())} >Back</Link>
-                        <button>Email</button>
-                        <button onClick={(Event)=>(this.sum(10000))}>Social networks</button>
-                        <button >No</button>
-                        <button >I don't know</button>
-                        <br></br> 
-                        {this.state.value}
+                <div>
+                     <Header></Header>
+                    {!this.state.loading &&
+                <div>
+                    
+                    <Container className="themed-container" fluid={true}>
+                    <div>
+                        <Row> 
+                            <Col md="12"> 
+                            <header className="header-text-questions"> Question {this.state.nextPage} of 10</header>
+                            <h1 className="body-title">{this.state.questions[0].content}</h1>
+                            </Col>
+                        </Row>
+
+                    <Row>
+                        <Col md="2"></Col>
+                        <Col  md="8">
+                            <Row>
+                                <Col md="12">
+                                    <Row>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[0].value))}>{this.state.questions[0].answers[0].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[1].value))}>{this.state.questions[0].answers[1].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[2].value))}>{this.state.questions[0].answers[2].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.state.questions[0].answers[2].value)}>{this.state.questions[0].answers[2].content}</button>
+                                    </div>
+                                    </Col>
+                                    </Row>
+                                    
+                                </Col>
+
+                            </Row>
+                        </Col>
+                        <Col md="2"></Col>
+
+                    </Row>
+
+                    <Row>
+                        <Col md="2"></Col>
+                        <Col md="8">
+                        <div className="back-btn-cont">
+                        <center><button className="back-btn" onClick={(Event) => (this.rest())}>Back</button></center>
+                        </div>
+                        </Col>
+                        <Col md="2"></Col>
+
+                    </Row>
+
+                    <br></br> 
+                    {this.state.value}
                     </div>
-            )
+                    </Container>
+
+                    <style>
+                    @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+                    </style>
+                    </div>}
+                </div>
+            );
+
+            //Question #3
         }else if(this.state.nextPage===3){
+
             return(
-                <div >
-                        <Header></Header>
-                        <Footer></Footer>
-                        <header>Page {this.state.nextPage} of 10</header>
-                        <h1>Does the user has his or profile?</h1> <Link onClick={(Event)=>(this.rest())}>Back</Link>
-                        <button>Yes</button>
-                        <button onClick={(Event)=>(this.sum(5000))}>No</button>
-                        <button >I don't know</button>
-                        <br></br> 
-                        {this.state.value}
+                <div>
+                     <Header></Header>
+                    {!this.state.loading &&
+                <div>
+                    <Container className="themed-container" fluid={true}>
+                    <div>
+                        <Row> 
+                            <Col md="12"> 
+                            <header className="header-text-questions"> Question {this.state.nextPage} of 10</header>
+                            <h1 className="body-title">{this.state.questions[0].content}</h1>
+                            </Col>
+                        </Row>
+
+                    <Row>
+                        <Col md="2"></Col>
+                        <Col  md="8">
+                            <Row>
+                                <Col md="12">
+                                    <Row>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[0].value))}>{this.state.questions[0].answers[0].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[1].value))}>{this.state.questions[0].answers[1].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[2].value))}>{this.state.questions[0].answers[2].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.state.questions[0].answers[2].value)}>{this.state.questions[0].answers[2].content}</button>
+                                    </div>
+                                    </Col>
+                                    </Row>
+                                    
+                                </Col>
+
+                            </Row>
+                        </Col>
+                        <Col md="2"></Col>
+
+                    </Row>
+
+                    <Row>
+                        <Col md="2"></Col>
+                        <Col md="8">
+                        <div className="back-btn-cont">
+                        <center><button className="back-btn" onClick={(Event) => (this.rest())}>Back</button></center>
+                        </div>
+                        </Col>
+                        <Col md="2"></Col>
+
+                    </Row>
+
+                    <br></br> 
+                    {this.state.value}
                     </div>
-            )
+                    </Container>
+
+                    <style>
+                    @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+                    </style>
+                    </div>}
+                </div>
+            );
+
+         //Question #4
         }else if(this.state.nextPage===4){
             return(
-                <div >
-                        <Header></Header>
-                        <Footer></Footer>
-                        <header>Page {this.state.nextPage} of 10</header>
-                        <h1>What kind of design do you want to your app?</h1> <Link onClick={(Event)=>(this.rest())}>Back</Link>
-                        <button>User-friendly interface</button>
-                        <button onClick={(Event)=>(this.sum(10000))}>Customized interface</button>
-                        <button >Replicated web interface</button>
-                        <button >I don't need design</button>
-                        <br></br> 
-                        {this.state.value}
+                <div>
+                     <Header></Header>
+                    {!this.state.loading &&
+                <div>
+                    <Container className="themed-container" fluid={true}>
+                    <div>
+                        <Row> 
+                            <Col md="12"> 
+                            <header className="header-text-questions"> Question {this.state.nextPage} of 10</header>
+                            <h1 className="body-title">{this.state.questions[0].content}</h1>
+                            </Col>
+                        </Row>
+
+                    <Row>
+                        <Col md="2"></Col>
+                        <Col  md="8">
+                            <Row>
+                                <Col md="12">
+                                    <Row>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[0].value))}>{this.state.questions[0].answers[0].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[1].value))}>{this.state.questions[0].answers[1].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[2].value))}>{this.state.questions[0].answers[2].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.state.questions[0].answers[2].value)}>{this.state.questions[0].answers[2].content}</button>
+                                    </div>
+                                    </Col>
+                                    </Row>
+                                    
+                                </Col>
+
+                            </Row>
+                        </Col>
+                        <Col md="2"></Col>
+
+                    </Row>
+
+                    <Row>
+                        <Col md="2"></Col>
+                        <Col md="8">
+                        <div className="back-btn-cont">
+                        <center><button className="back-btn" onClick={(Event) => (this.rest())}>Back</button></center>
+                        </div>
+                        </Col>
+                        <Col md="2"></Col>
+
+                    </Row>
+
+                    <br></br> 
+                    {this.state.value}
                     </div>
-            )
+                    </Container>
+
+                    <style>
+                    @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+                    </style>
+                    </div>}
+                </div>
+            );
+        
+        // Question #5
         }else if(this.state.nextPage===5){
             return(
-                <div >
-                        <Header></Header>
-                        <Footer></Footer>
-                        <header>Page {this.state.nextPage} of 10</header>
-                        <h1>How do you want to take benefit from your app?</h1> <Link onClick={(Event)=>(this.rest())}>Back</Link>
-                        <button>Free application with advertising</button>
-                        <button onClick={(Event)=>(this.sum(10000))}>Advertising-free payment application</button>
-                        <button >Shopping within the app</button>
-                        <button>I don't know</button>
-                        <br></br> 
-                        {this.state.value}
+                <div>
+                     <Header></Header>
+                    {!this.state.loading &&
+                <div>
+                    <Container className="themed-container" fluid={true}>
+                    <div >
+                        <Row> 
+                            <Col md="12"> 
+                            <header className="header-text-questions"> Question {this.state.nextPage} of 10</header>
+                            <h1 className="body-title">{this.state.questions[0].content}</h1>
+                            </Col>
+                        </Row>
+
+                    <Row>
+                        <Col md="2"></Col>
+                        <Col  md="8">
+                            <Row>
+                                <Col md="12">
+                                    <Row>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[0].value))}>{this.state.questions[0].answers[0].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[1].value))}>{this.state.questions[0].answers[1].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[2].value))}>{this.state.questions[0].answers[2].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.state.questions[0].answers[2].value)}>{this.state.questions[0].answers[2].content}</button>
+                                    </div>
+                                    </Col>
+                                    </Row>
+                                    
+                                </Col>
+
+                            </Row>
+                        </Col>
+                        <Col md="2"></Col>
+
+                    </Row>
+
+                    <Row>
+                        <Col md="2"></Col>
+                        <Col md="8">
+                        <div className="back-btn-cont">
+                        <center><button className="back-btn" onClick={(Event) => (this.rest())}>Back</button></center>
+                        </div>
+                        </Col>
+                        <Col md="2"></Col>
+
+                    </Row>
+
+                    <br></br> 
+                    {this.state.value}
                     </div>
-            )
+                    </Container>
+
+                    <style>
+                    @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+                    </style>
+                    </div>}
+                </div>
+            );
+        
+        //Question #6
         }else if(this.state.nextPage===6){
             return(
-                <div >
-                        <Header></Header>
-                        <Footer></Footer>
-                        <header>Page {this.state.nextPage} of 10</header>
-                        <h1>How do you want to take benefit from your app?</h1> <Link onClick={(Event)=>(this.rest())}>Back</Link>
-                        <button>Free application with advertising</button>
-                        <button onClick={(Event)=>(this.sum(10000))}>Advertising-free payment application</button>
-                        <button >Shopping within the app</button>
-                        <button>I don't know</button>
-                        <br></br> 
-                        {this.state.value}
+                <div>
+                     <Header></Header>
+                    {!this.state.loading &&
+                <div>
+                    <Container className="themed-container" fluid={true}>
+                    <div >
+                        <Row> 
+                            <Col md="12"> 
+                            <header className="header-text-questions"> Question {this.state.nextPage} of 10</header>
+                            <h1 className="body-title">{this.state.questions[0].content}</h1>
+                            </Col>
+                        </Row>
+
+                    <Row>
+                        <Col md="2"></Col>
+                        <Col  md="8">
+                            <Row>
+                                <Col md="12">
+                                    <Row>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[0].value))}>{this.state.questions[0].answers[0].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[1].value))}>{this.state.questions[0].answers[1].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[2].value))}>{this.state.questions[0].answers[2].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.state.questions[0].answers[2].value)}>{this.state.questions[0].answers[2].content}</button>
+                                    </div>
+                                    </Col>
+                                    </Row>
+                                    
+                                </Col>
+
+                            </Row>
+                        </Col>
+                        <Col md="2"></Col>
+
+                    </Row>
+
+                    <Row>
+                        <Col md="2"></Col>
+                        <Col md="8">
+                        <div className="back-btn-cont">
+                        <center><button className="back-btn" onClick={(Event) => (this.rest())}>Back</button></center>
+                        </div>
+                        </Col>
+                        <Col md="2"></Col>
+
+                    </Row>
+
+                    <br></br> 
+                    {this.state.value}
                     </div>
-            )
+                    </Container>
+
+                    <style>
+                    @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+                    </style>
+                    </div>}
+                </div>
+            );
+
+        //Question #7
         }else if(this.state.nextPage===7){
             return(
-                <div >
-                        <Header></Header>
-                        <Footer></Footer>
-                        <header>Page {this.state.nextPage} of 10</header>
-                        <h1>How do you want to take benefit from your app?</h1> <Link onClick={(Event)=>(this.rest())}>Back</Link>
-                        <button>Free application with advertising</button>
-                        <button onClick={(Event)=>(this.sum(10000))}>Advertising-free payment application</button>
-                        <button >Shopping within the app</button>
-                        <button>I don't know</button>
-                        <br></br> 
-                        {this.state.value}
+                <div>
+                     <Header></Header>
+                    {!this.state.loading &&
+                <div>
+                    <Container className="themed-container" fluid={true}>
+                    <div >
+                        <Row> 
+                            <Col md="12"> 
+                            <header className="header-text-questions"> Question {this.state.nextPage} of 10</header>
+                            <h1 className="body-title">{this.state.questions[0].content}</h1>
+                            </Col>
+                        </Row>
+
+                    <Row>
+                        <Col md="2"></Col>
+                        <Col  md="8">
+                            <Row>
+                                <Col md="12">
+                                    <Row>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[0].value))}>{this.state.questions[0].answers[0].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[1].value))}>{this.state.questions[0].answers[1].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[2].value))}>{this.state.questions[0].answers[2].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.state.questions[0].answers[2].value)}>{this.state.questions[0].answers[2].content}</button>
+                                    </div>
+                                    </Col>
+                                    </Row>
+                                    
+                                </Col>
+
+                            </Row>
+                        </Col>
+                        <Col md="2"></Col>
+
+                    </Row>
+
+                    <Row>
+                        <Col md="2"></Col>
+                        <Col md="8">
+                        <div className="back-btn-cont">
+                        <center><button className="back-btn" onClick={(Event) => (this.rest())}>Back</button></center>
+                        </div>
+                        </Col>
+                        <Col md="2"></Col>
+
+                    </Row>
+
+                    <br></br> 
+                    {this.state.value}
                     </div>
-            )
+                    </Container>
+
+                    <style>
+                    @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+                    </style>
+                    </div>}
+                </div>
+            );
+
+        //Question #8
         }else if(this.state.nextPage===8){
             return(
-                <div >
-                        <Header></Header>
-                        <Footer></Footer>
-                        <header>Page {this.state.nextPage} of 10</header>
-                        <h1>How do you want to take benefit from your app?</h1> <Link onClick={(Event)=>(this.rest())}>Back</Link>
-                        <button>Free application with advertising</button>
-                        <button onClick={(Event)=>(this.sum(10000))}>Advertising-free payment application</button>
-                        <button >Shopping within the app</button>
-                        <button>I don't know</button>
-                        <br></br> 
-                        {this.state.value}
+                <div>
+                     <Header></Header>
+                    {!this.state.loading &&
+                <div>
+                    <Container className="themed-container" fluid={true}>
+                    <div>
+                        <Row> 
+                            <Col md="12"> 
+                            <header className="header-text-questions"> Question {this.state.nextPage} of 10</header>
+                            <h1 className="body-title">{this.state.questions[0].content}</h1>
+                            </Col>
+                        </Row>
+
+                    <Row>
+                        <Col md="2"></Col>
+                        <Col  md="8">
+                            <Row>
+                                <Col md="12">
+                                    <Row>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[0].value))}>{this.state.questions[0].answers[0].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[1].value))}>{this.state.questions[0].answers[1].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[2].value))}>{this.state.questions[0].answers[2].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.state.questions[0].answers[2].value)}>{this.state.questions[0].answers[2].content}</button>
+                                    </div>
+                                    </Col>
+                                    </Row>
+                                    
+                                </Col>
+
+                            </Row>
+                        </Col>
+                        <Col md="2"></Col>
+
+                    </Row>
+
+                    <Row>
+                        <Col md="2"></Col>
+                        <Col md="8">
+                        <div className="back-btn-cont">
+                        <center><button className="back-btn" onClick={(Event) => (this.rest())}>Back</button></center>
+                        </div>
+                        </Col>
+                        <Col md="2"></Col>
+
+                    </Row>
+
+                    <br></br> 
+                    {this.state.value}
                     </div>
-            )
+                    </Container>
+
+                    <style>
+                    @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+                    </style>
+                    </div>}
+                </div>
+            );
+
+        //Question #9
         }else if(this.state.nextPage===9){
             return(
-                <div >
-                        <Header></Header>
-                        <Footer></Footer>
-                        <header>Page {this.state.nextPage} of 10</header>
-                        <h1>How do you want to take benefit from your app?</h1> <Link onClick={(Event)=>(this.rest())}>Back</Link>
-                        <button>Free application with advertising</button>
-                        <button onClick={(Event)=>(this.sum(10000))}>Advertising-free payment application</button>
-                        <button >Shopping within the app</button>
-                        <button>I don't know</button>
-                        <br></br> 
-                        {this.state.value}
+                <div>
+                     <Header></Header>
+                    {!this.state.loading &&
+                <div>
+                    <Container className="themed-container" fluid={true}>
+                    <div>
+                        <Row> 
+                            <Col md="12"> 
+                            <header className="header-text-questions"> Question {this.state.nextPage} of 10</header>
+                            <h1 className="body-title">{this.state.questions[0].content}</h1>
+                            </Col>
+                        </Row>
+
+                    <Row>
+                        <Col md="2"></Col>
+                        <Col  md="8">
+                            <Row>
+                                <Col md="12">
+                                    <Row>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[0].value))}>{this.state.questions[0].answers[0].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[1].value))}>{this.state.questions[0].answers[1].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[2].value))}>{this.state.questions[0].answers[2].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.state.questions[0].answers[2].value)}>{this.state.questions[0].answers[2].content}</button>
+                                    </div>
+                                    </Col>
+                                    </Row>
+                                    
+                                </Col>
+
+                            </Row>
+                        </Col>
+                        <Col md="2"></Col>
+
+                    </Row>
+
+                    <Row>
+                        <Col md="2"></Col>
+                        <Col md="8">
+                        <div className="back-btn-cont">
+                        <center><button className="back-btn" onClick={(Event) => (this.rest())}><span>Back</span></button></center>
+                        </div>
+                        </Col>
+                        <Col md="2"></Col>
+
+                    </Row>
+
+                    <br></br> 
+                    {this.state.value}
                     </div>
-            )
+                    </Container>
+
+                    <style>
+                    @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+                    </style>
+                    </div>}
+                </div>
+            );
+
+        //Question #10
         }else if(this.state.nextPage===10){
             return(
-                <div >
-                        <Header></Header>
-                        <Footer></Footer>                    
-                        <header>Page {this.state.nextPage} of 10</header>
-                        <h1>How do you want to take benefit from your app?</h1> <Link onClick={(Event)=>(this.rest())}>Back</Link>
-                        <button>Free application with advertising</button>
-                        <button onClick={(Event)=>(this.sum(10000))}>Advertising-free payment application</button>
-                        <button >Shopping within the app</button>
-                        <button>I don't know</button>
-                        <br></br> 
-                        {this.state.value}
+                <div>
+                     <Header></Header>
+                    {!this.state.loading &&
+                <div>
+                    <Container className="themed-container" fluid={true}>
+                    <div>
+                        <Row> 
+                            <Col md="12"> 
+                            <header className="header-text-questions"> Question {this.state.nextPage} of 10</header>
+                            <h1 className="body-title">{this.state.questions[0].content}</h1>
+                            </Col>
+                        </Row>
+
+                    <Row>
+                        <Col md="2"></Col>
+                        <Col  md="8">
+                            <Row>
+                                <Col md="12">
+                                    <Row>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[0].value))}>{this.state.questions[0].answers[0].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[1].value))}>{this.state.questions[0].answers[1].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[2].value))}>{this.state.questions[0].answers[2].content}</button>
+                                    </div>
+                                    </Col>
+                                    <Col sm="12" md="12" lg="3">
+                                    <div className="opt">
+                                    <button className="opt-btn" onClick={(Event)=>(this.state.questions[0].answers[2].value)}>{this.state.questions[0].answers[2].content}</button>
+                                    </div>
+                                    </Col>
+                                    </Row>
+                                    
+                                </Col>
+
+                            </Row>
+                        </Col>
+                        <Col md="2"></Col>
+
+                    </Row>
+
+                    <Row>
+                        <Col md="2"></Col>
+                        <Col md="8">
+                        <div className="back-btn-cont">
+                        <center><button className="back-btn" onClick={(Event) => (this.rest())}>Back</button></center>
+                        </div>
+                        </Col>
+                        <Col md="2"></Col>
+
+                    </Row>
+
+                    <br></br> 
+                    {this.state.value}
                     </div>
-            )
+                    </Container>
+
+                    <style>
+                    @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+                    </style>
+                    </div>}
+                </div>
+            );
+
         }else if(this.state.nextPage===11){
             ///Poner formulario de correo
             //Precio final en el div
