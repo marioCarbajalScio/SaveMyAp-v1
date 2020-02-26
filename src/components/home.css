@@ -1,0 +1,38 @@
+.body {
+    padding-top: 100px;
+}
+
+.body-title {
+    font-family: 'Ubuntu';
+    font-weight: bold;
+    color: #0087ff;
+    text-align: center;
+}
+
+.body-text {
+    padding-top: 30px;
+    font-size: 20px;
+    color: #a5a5a5;
+    font-family: sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    text-align: center;
+}
+
+.buttons {
+    text-align: center;
+    position: relative;
+    top: 100px;
+}
+
+.header-text {
+    text-align: right;
+    padding-right: 250px;
+    color: #a5a5a5;
+    font-size: 20px;
+}
+
+.btn-container {
+    padding-top: 50px;
+    padding-left: 500px;
+}
