@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 import sendEmail from '../services/email';
 
 import Button from 'react-bootstrap/Button'
@@ -47,10 +48,20 @@ class FormEmail extends Component {
             <Form.Control type="text" placeholder="Total price"  name="total" value={this.props.val}/>
           </Form.Group>
 
+          <Row>
+          <Col>
           <Button variant="primary" type="submit" value="Send">
-            Submit
-          </Button>
+              Submit
+            </Button>
+          </Col>
+          <Col></Col>
+          <Col></Col>
+          <Col>
+          <Link to="/" ><Button variant="secondary" type="submit" value="Send">Home</Button></Link>
+          </Col>
+          </Row>
         </Form>
+        
         </Col>
         <Col lg={4} md={4} sm={1} xs={1}></Col>
       </Row>

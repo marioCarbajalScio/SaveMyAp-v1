@@ -4,7 +4,7 @@ const service_id = "smtp_server";//Gmail
 const template_id = "template_XWtRtIZn";//Formato de la api
 const template_id_scio = "email_template_notification";//Email de notificaciones de Rod
 const user_id = 'user_rwpKTbKkkCAKLMLlzZhJd';//Llave de mi correo personal {Se cambiara por otro despues}
-const email_scio = "";
+const email_scio="macarbajal@sciodev.com"
 
 export default function sendEmail(e) {//Funcion para mandar email
   e.preventDefault();
@@ -19,7 +19,6 @@ export default function sendEmail(e) {//Funcion para mandar email
    emailjs.send(service_id, template_id, template_params, user_id )
    .then((result) => {
       console.log(result.text);
-      email_scio="macarbajal@sciodev.com"
   }, (error) => {
       console.log(error.text);
   });

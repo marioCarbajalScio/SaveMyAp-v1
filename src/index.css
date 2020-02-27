@@ -142,3 +142,7 @@ code {
     color: #379ef8;
     text-align: center;
 }
+
+.home-btn {
+    float:right;
+}
