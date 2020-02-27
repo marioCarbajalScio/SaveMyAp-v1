@@ -21,34 +21,32 @@ class Questions2 extends Component{
 
     //Info process functions
     sum=(value)=>{
-        console.log("suma:" + value)
         this.state.valores[this.state.nextPage]=value
         this.cambiarContador(this.state.value+value)
         this.cambiarPagina(this.state.nextPage+1)
      }
  
      rest=()=>{
-        console.log("resta")
+        
         this.cambiarContador(this.state.value-this.state.valores[this.state.nextPage-1])
         this.cambiarPagina(this.state.nextPage-1)
      }
 
      cambiarContador=(n)=>{
-        console.log("contador")
          this.setState({value:n})
      }
 
      cambiarPagina=(n)=>{
-        console.log("pagina")
+         console.log(n)
         this.setState({nextPage:n})
     }
 
     //added API func
     componentDidMount(){
-        fetch('http://10.16.0.64:9999')
+        fetch('http://10.16.0.64:1337/api')
         .then(res => res.json())
         .then((data) => {
-            this.setState({questions:data, loading:false})
+            this.setState({questions:data.questions, loading:false})
         })
         .catch(console.log)
     }
@@ -57,12 +55,11 @@ class Questions2 extends Component{
     if(!this.state.loading){
         switch(this.state.nextPage){
             case 1:
-                return(
+                return (
                     <div>
                         {!this.state.loading &&
                         <div>
                         <Question 
-                            //data={this.state} 
                             page={this.state.nextPage}
                             question={this.state.questions[this.state.nextPage-1].content}
                             answers={this.state.questions[this.state.nextPage-1].answers}
@@ -82,12 +79,13 @@ class Questions2 extends Component{
                     </div>
                 )
             case 2:
+                console.log("Numero 2")
+                console.log(this.state.loading)
                 return(
                     <div>
                         {!this.state.loading &&
                         <div>
                         <Question 
-                            //data={this.state} 
                             page={this.state.nextPage}
                             question={this.state.questions[this.state.nextPage-1].content}
                             answers={this.state.questions[this.state.nextPage-1].answers}
@@ -107,30 +105,52 @@ class Questions2 extends Component{
                     </div>
                 )
             case 3:
+                console.log(this.state.loading)
                 return(
                     <div>
                         {!this.state.loading &&
-                        <Question 
-                            //data={this.state} 
-                            page={this.state.nextPage}
-                            question={this.state.questions[this.state.nextPage-1].content}
-                            answers={this.state.questions[this.state.nextPage-1].answers}
-                            sumar={this.sum}
-                        ></Question>
+                       <div>
+                       <Question 
+                           page={this.state.nextPage}
+                           question={this.state.questions[this.state.nextPage-1].content}
+                           answers={this.state.questions[this.state.nextPage-1].answers}
+                           sumar={this.sum}
+                       ></Question>
+                       <Row>
+                           <Col md="2"></Col>
+                           <Col md="8">
+                           <div className="back-btn-cont">
+                           <center><button className="back-btn"  onClick={(Event) => (this.rest())}>Back</button></center>
+                           </div>
+                           </Col>
+                           <Col md="2"></Col>
+                       </Row>
+                       </div>
                         }
                     </div>
                 )
             case 4:
+                console.log(this.state.loading)
                 return(
                     <div>
                         {!this.state.loading &&
+                        <div>
                         <Question 
-                            //data={this.state} 
                             page={this.state.nextPage}
                             question={this.state.questions[this.state.nextPage-1].content}
                             answers={this.state.questions[this.state.nextPage-1].answers}
                             sumar={this.sum}
                         ></Question>
+                        <Row>
+                            <Col md="2"></Col>
+                            <Col md="8">
+                            <div className="back-btn-cont">
+                            <center><button className="back-btn"  onClick={(Event) => (this.rest())}>Back</button></center>
+                            </div>
+                            </Col>
+                            <Col md="2"></Col>
+                        </Row>
+                        </div>
                         }
                     </div>
                 )
@@ -138,13 +158,23 @@ class Questions2 extends Component{
                 return(
                     <div>
                         {!this.state.loading &&
+                        <div>
                         <Question 
-                            //data={this.state} 
                             page={this.state.nextPage}
                             question={this.state.questions[this.state.nextPage-1].content}
                             answers={this.state.questions[this.state.nextPage-1].answers}
                             sumar={this.sum}
                         ></Question>
+                        <Row>
+                            <Col md="2"></Col>
+                            <Col md="8">
+                            <div className="back-btn-cont">
+                            <center><button className="back-btn"  onClick={(Event) => (this.rest())}>Back</button></center>
+                            </div>
+                            </Col>
+                            <Col md="2"></Col>
+                        </Row>
+                        </div>
                         }
                     </div>
                 )
@@ -152,13 +182,23 @@ class Questions2 extends Component{
                 return(
                     <div>
                         {!this.state.loading &&
+                        <div>
                         <Question 
-                            //data={this.state} 
                             page={this.state.nextPage}
                             question={this.state.questions[this.state.nextPage-1].content}
                             answers={this.state.questions[this.state.nextPage-1].answers}
                             sumar={this.sum}
                         ></Question>
+                        <Row>
+                            <Col md="2"></Col>
+                            <Col md="8">
+                            <div className="back-btn-cont">
+                            <center><button className="back-btn"  onClick={(Event) => (this.rest())}>Back</button></center>
+                            </div>
+                            </Col>
+                            <Col md="2"></Col>
+                        </Row>
+                        </div>
                         }
                     </div>
                 )
@@ -166,13 +206,23 @@ class Questions2 extends Component{
                 return(
                     <div>
                         {!this.state.loading &&
+                        <div>
                         <Question 
-                            //data={this.state} 
                             page={this.state.nextPage}
                             question={this.state.questions[this.state.nextPage-1].content}
                             answers={this.state.questions[this.state.nextPage-1].answers}
                             sumar={this.sum}
                         ></Question>
+                        <Row>
+                            <Col md="2"></Col>
+                            <Col md="8">
+                            <div className="back-btn-cont">
+                            <center><button className="back-btn"  onClick={(Event) => (this.rest())}>Back</button></center>
+                            </div>
+                            </Col>
+                            <Col md="2"></Col>
+                        </Row>
+                        </div>
                         }
                     </div>
                 )
@@ -180,13 +230,23 @@ class Questions2 extends Component{
                 return(
                     <div>
                         {!this.state.loading &&
+                        <div>
                         <Question 
-                            //data={this.state} 
                             page={this.state.nextPage}
                             question={this.state.questions[this.state.nextPage-1].content}
                             answers={this.state.questions[this.state.nextPage-1].answers}
                             sumar={this.sum}
                         ></Question>
+                        <Row>
+                            <Col md="2"></Col>
+                            <Col md="8">
+                            <div className="back-btn-cont">
+                            <center><button className="back-btn"  onClick={(Event) => (this.rest())}>Back</button></center>
+                            </div>
+                            </Col>
+                            <Col md="2"></Col>
+                        </Row>
+                        </div>
                         }
                     </div>
                 )
@@ -194,13 +254,23 @@ class Questions2 extends Component{
                 return(
                     <div>
                         {!this.state.loading &&
+                        <div>
                         <Question 
-                            //data={this.state} 
                             page={this.state.nextPage}
                             question={this.state.questions[this.state.nextPage-1].content}
                             answers={this.state.questions[this.state.nextPage-1].answers}
                             sumar={this.sum}
                         ></Question>
+                        <Row>
+                            <Col md="2"></Col>
+                            <Col md="8">
+                            <div className="back-btn-cont">
+                            <center><button className="back-btn"  onClick={(Event) => (this.rest())}>Back</button></center>
+                            </div>
+                            </Col>
+                            <Col md="2"></Col>
+                        </Row>
+                        </div>
                         }
                     </div>
                 )
@@ -208,19 +278,29 @@ class Questions2 extends Component{
                 return(
                     <div>
                         {!this.state.loading &&
+                        <div>
                         <Question 
-                            //data={this.state} 
                             page={this.state.nextPage}
                             question={this.state.questions[this.state.nextPage-1].content}
                             answers={this.state.questions[this.state.nextPage-1].answers}
                             sumar={this.sum}
-                        ></Question>
+                        />{console.log(this.state.nextPage)}
+                        <Row>
+                            <Col md="2"></Col>
+                            <Col md="8">
+                            <div className="back-btn-cont">
+                            <center><button className="back-btn"  onClick={(Event) => (this.rest())}>Back</button></center>
+                            </div>
+                            </Col>
+                            <Col md="2"></Col>
+                        </Row>
+                        </div>
                         }
                     </div>
                 )
             case 11:
                 return(
-                    <FromEmail></FromEmail>
+                    <FromEmail val={this.state.value}></FromEmail>
                 )
             }
         }else{

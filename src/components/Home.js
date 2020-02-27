@@ -3,11 +3,6 @@ import { Link } from 'react-router-dom';
 import Header from './header/header.js';
 import Footer from './footer/footer.js'
 
-import Button from 'react-bootstrap/Button'
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
-import Container from 'react-bootstrap/Container';
-
 class Home extends Component{
 
     render(){

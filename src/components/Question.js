@@ -39,7 +39,7 @@ class Question extends Component{
                                 <Col md="12">
                                     <Row>
                                     {this.state.answers.map((ans,i) =>(
-                                        <Col sm="12" md="12" lg="3" key={i}>
+                                        <Col sm="12" md="12" lg key={i}>
                                             <div className="opt">
                                                 <button className="opt-btn" onClick={(Event)=>(this.props.sumar(ans.value))}>{ans.content}</button>
                                             </div>
