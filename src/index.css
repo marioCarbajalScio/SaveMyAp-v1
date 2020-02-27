@@ -97,6 +97,7 @@ code {
     border-radius: 10px;
     cursor: pointer;
     width: 120%;
+    max-width: 300px;
     height: 120px;
     transition: transform 0.3s ease;
     background-color: transparent;

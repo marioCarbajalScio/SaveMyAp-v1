@@ -6,20 +6,20 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Alert from 'react-bootstrap/Alert'
 
 import Header from './header/header'
 
 class FormEmail extends Component {
 
   constructor(props){
-    super(props);
-    this.state = {
-        //total:this.props.val
-      }
+    super(props)
+    this.state={
+        send: true
+      };
   }
 
   render(){
-    {console.log(this.props)}
     return (
       <div>
       <Header></Header>
@@ -50,14 +50,16 @@ class FormEmail extends Component {
 
           <Row>
           <Col>
-          <Button variant="primary" type="submit" value="Send">
+         <Button variant="primary" type="submit" value="Send">
               Submit
             </Button>
           </Col>
           <Col></Col>
           <Col></Col>
+          <Col></Col>
+          <Col></Col>
           <Col>
-          <Link to="/" ><Button variant="secondary" type="submit" value="Send">Home</Button></Link>
+          <Link to="/" ><Button variant="secondary" >Home</Button></Link>
           </Col>
           </Row>
         </Form>

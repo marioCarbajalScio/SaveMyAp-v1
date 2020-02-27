@@ -37,7 +37,6 @@ class Questions2 extends Component{
      }
 
      cambiarPagina=(n)=>{
-         console.log(n)
         this.setState({nextPage:n})
     }
 
@@ -79,8 +78,6 @@ class Questions2 extends Component{
                     </div>
                 )
             case 2:
-                console.log("Numero 2")
-                console.log(this.state.loading)
                 return(
                     <div>
                         {!this.state.loading &&
@@ -105,7 +102,6 @@ class Questions2 extends Component{
                     </div>
                 )
             case 3:
-                console.log(this.state.loading)
                 return(
                     <div>
                         {!this.state.loading &&
@@ -130,7 +126,6 @@ class Questions2 extends Component{
                     </div>
                 )
             case 4:
-                console.log(this.state.loading)
                 return(
                     <div>
                         {!this.state.loading &&
