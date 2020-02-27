@@ -284,7 +284,7 @@ class Questions2 extends Component{
                             question={this.state.questions[this.state.nextPage-1].content}
                             answers={this.state.questions[this.state.nextPage-1].answers}
                             sumar={this.sum}
-                        />{console.log(this.state.nextPage)}
+                        />
                         <Row>
                             <Col md="2"></Col>
                             <Col md="8">

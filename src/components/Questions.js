@@ -44,10 +44,10 @@ class Questions extends Component{
 
     //added API func
     componentDidMount(){
-        fetch('http://10.16.0.64:9999')
+        fetch('http://10.16.0.64:1337/api')
         .then(res => res.json())
         .then((data) => {
-            this.setState({questions:data, loading:false})
+            this.setState({questions:data.questions, loading:false})
         })
         .catch(console.log)
     }
@@ -141,7 +141,7 @@ class Questions extends Component{
                         <Row> 
                             <Col md="12"> 
                             <header className="header-text-questions"> Question {this.state.nextPage} of 10</header>
-                            <h1 className="body-title">{this.state.questions[0].content}</h1>
+                            <h1 className="body-title">{this.state.questions[1].content}</h1>
                             </Col>
                         </Row>
 
@@ -153,22 +153,22 @@ class Questions extends Component{
                                     <Row>
                                     <Col sm="12" md="12" lg="3">
                                     <div className="opt">
-                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[0].value))}>{this.state.questions[0].answers[0].content}</button>
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[1].answers[0].value))}>{this.state.questions[1].answers[0].content}</button>
                                     </div>
                                     </Col>
                                     <Col sm="12" md="12" lg="3">
                                     <div className="opt">
-                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[1].value))}>{this.state.questions[0].answers[1].content}</button>
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[1].answers[1].value))}>{this.state.questions[1].answers[1].content}</button>
                                     </div>
                                     </Col>
                                     <Col sm="12" md="12" lg="3">
                                     <div className="opt">
-                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[0].answers[2].value))}>{this.state.questions[0].answers[2].content}</button>
+                                    <button className="opt-btn" onClick={(Event)=>(this.sum(this.state.questions[1].answers[2].value))}>{this.state.questions[1].answers[2].content}</button>
                                     </div>
                                     </Col>
                                     <Col sm="12" md="12" lg="3">
                                     <div className="opt">
-                                    <button className="opt-btn" onClick={(Event)=>(this.state.questions[0].answers[2].value)}>{this.state.questions[0].answers[2].content}</button>
+                                    <button className="opt-btn" onClick={(Event)=>(this.state.questions[1].answers[2].value)}>{this.state.questions[1].answers[2].content}</button>
                                     </div>
                                     </Col>
                                     </Row>

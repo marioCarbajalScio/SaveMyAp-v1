@@ -18,6 +18,7 @@ class Question extends Component{
     }
 
     render(){
+    const {question}=this.props;
     return(
         <div>
             <Header></Header>
@@ -27,8 +28,8 @@ class Question extends Component{
                     <div>
                         <Row> 
                             <Col md="12"> 
-                            <header className="header-text-questions"> Question {this.state.page} of 10</header>
-                            <h1 className="body-title">{this.state.question}</h1>
+                            <header className="header-text-questions"> Question {this.props.page} of 10</header>
+                            <h1 className="body-title">{this.props.question}</h1>
                             </Col>
                         </Row>
 
@@ -38,7 +39,7 @@ class Question extends Component{
                             <Row>
                                 <Col md="12">
                                     <Row>
-                                    {this.state.answers.map((ans,i) =>(
+                                    {this.props.answers.map((ans,i) =>(
                                         <Col sm="12" md="12" lg key={i}>
                                             <div className="opt">
                                                 <button className="opt-btn" onClick={(Event)=>(this.props.sumar(ans.value))}>{ans.content}</button>

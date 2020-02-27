@@ -26,7 +26,7 @@ class FormEmail extends Component {
         <Col lg={4} md={4} sm={1} xs={1}></Col>
         <Col lg={4} md={4} sm={10} xs={10}>
           <h1 className="body-title">We're almost done</h1>
-          <h2 className="total-price">Your app total cost : {this.props.val} </h2>
+          <h2 className="total-price">Your app total cost :<br></br>${this.props.val}.00 </h2>
           <p className="body-text">Please complete this form below to send an email with your cost and keep contact</p>
         <Form onSubmit={sendEmail}>
           <Form.Group controlId="formBasicEmail">

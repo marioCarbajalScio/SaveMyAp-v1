@@ -11,9 +11,7 @@ function App() {
       <BrowserRouter>
         <Switch>
         <Route exact path='/' component={Home}/>
-        <Route exact path='/questions' component={Questions}/>
-        <Route exact path='/questions2' component={Questions2}/>
-        <Route exact path='/send-email' component={FormEmail}/>
+        <Route exact path='/questions' component={Questions2}/>
         </Switch>
         </BrowserRouter>
 
