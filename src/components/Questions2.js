@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Question from './Question';
 import FromEmail from './form-email';
+import { Link } from 'react-router-dom';
+
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 class Questions2 extends Component{
 
@@ -17,21 +21,25 @@ class Questions2 extends Component{
 
     //Info process functions
     sum=(value)=>{
+        console.log("suma:" + value)
         this.state.valores[this.state.nextPage]=value
         this.cambiarContador(this.state.value+value)
         this.cambiarPagina(this.state.nextPage+1)
      }
  
      rest=()=>{
+        console.log("resta")
         this.cambiarContador(this.state.value-this.state.valores[this.state.nextPage-1])
         this.cambiarPagina(this.state.nextPage-1)
      }
 
      cambiarContador=(n)=>{
+        console.log("contador")
          this.setState({value:n})
      }
 
      cambiarPagina=(n)=>{
+        console.log("pagina")
         this.setState({nextPage:n})
     }
 
@@ -46,65 +54,169 @@ class Questions2 extends Component{
     }
 
     render(){
-    console.log(this.state.questions)
     if(!this.state.loading){
         switch(this.state.nextPage){
             case 1:
                 return(
-                    
+                    <div>
+                        {!this.state.loading &&
+                        <div>
+                        <Question 
+                            //data={this.state} 
+                            page={this.state.nextPage}
+                            question={this.state.questions[this.state.nextPage-1].content}
+                            answers={this.state.questions[this.state.nextPage-1].answers}
+                            sumar={this.sum}
+                        ></Question>
+                        <Row>
+                            <Col md="2"></Col>
+                            <Col md="8">
+                            <div className="back-btn-cont">
+                            <center><Link to="/" ><button className="back-btn">Back</button></Link></center>
+                            </div>
+                            </Col>
+                            <Col md="2"></Col>
+                        </Row>
+                        </div>
+                        }
+                    </div>
+                )
+            case 2:
+                return(
+                    <div>
+                        {!this.state.loading &&
+                        <div>
+                        <Question 
+                            //data={this.state} 
+                            page={this.state.nextPage}
+                            question={this.state.questions[this.state.nextPage-1].content}
+                            answers={this.state.questions[this.state.nextPage-1].answers}
+                            sumar={this.sum}
+                        ></Question>
+                        <Row>
+                            <Col md="2"></Col>
+                            <Col md="8">
+                            <div className="back-btn-cont">
+                            <center><button className="back-btn"  onClick={(Event) => (this.rest())}>Back</button></center>
+                            </div>
+                            </Col>
+                            <Col md="2"></Col>
+                        </Row>
+                        </div>
+                        }
+                    </div>
+                )
+            case 3:
+                return(
                     <div>
                         {!this.state.loading &&
                         <Question 
                             //data={this.state} 
                             page={this.state.nextPage}
                             question={this.state.questions[this.state.nextPage-1].content}
-                            answers={this.state.questions[this.state.nextPage-1].answers}//Contiene respuestas y valores
-                            //Metodos para modificar los valores de este componente
+                            answers={this.state.questions[this.state.nextPage-1].answers}
                             sumar={this.sum}
-                            resta={this.res}
-                            contador={this.cambiarContador}
-                            pagina={this.cambiarPagina}
                         ></Question>
                         }
                     </div>
-
-                    
-                )
-            case 2:
-                return(
-                    <Question></Question>
-                )
-            case 3:
-                return(
-                    <Question></Question>
                 )
             case 4:
                 return(
-                    <Question></Question>
+                    <div>
+                        {!this.state.loading &&
+                        <Question 
+                            //data={this.state} 
+                            page={this.state.nextPage}
+                            question={this.state.questions[this.state.nextPage-1].content}
+                            answers={this.state.questions[this.state.nextPage-1].answers}
+                            sumar={this.sum}
+                        ></Question>
+                        }
+                    </div>
                 )
             case 5:
                 return(
-                    <Question></Question>
+                    <div>
+                        {!this.state.loading &&
+                        <Question 
+                            //data={this.state} 
+                            page={this.state.nextPage}
+                            question={this.state.questions[this.state.nextPage-1].content}
+                            answers={this.state.questions[this.state.nextPage-1].answers}
+                            sumar={this.sum}
+                        ></Question>
+                        }
+                    </div>
                 )
             case 6:
                 return(
-                    <Question></Question>
+                    <div>
+                        {!this.state.loading &&
+                        <Question 
+                            //data={this.state} 
+                            page={this.state.nextPage}
+                            question={this.state.questions[this.state.nextPage-1].content}
+                            answers={this.state.questions[this.state.nextPage-1].answers}
+                            sumar={this.sum}
+                        ></Question>
+                        }
+                    </div>
                 )
             case 7:
                 return(
-                    <Question></Question>
+                    <div>
+                        {!this.state.loading &&
+                        <Question 
+                            //data={this.state} 
+                            page={this.state.nextPage}
+                            question={this.state.questions[this.state.nextPage-1].content}
+                            answers={this.state.questions[this.state.nextPage-1].answers}
+                            sumar={this.sum}
+                        ></Question>
+                        }
+                    </div>
                 )
             case 8:
                 return(
-                    <Question></Question>
+                    <div>
+                        {!this.state.loading &&
+                        <Question 
+                            //data={this.state} 
+                            page={this.state.nextPage}
+                            question={this.state.questions[this.state.nextPage-1].content}
+                            answers={this.state.questions[this.state.nextPage-1].answers}
+                            sumar={this.sum}
+                        ></Question>
+                        }
+                    </div>
                 )
             case 9:
                 return(
-                    <Question></Question>
+                    <div>
+                        {!this.state.loading &&
+                        <Question 
+                            //data={this.state} 
+                            page={this.state.nextPage}
+                            question={this.state.questions[this.state.nextPage-1].content}
+                            answers={this.state.questions[this.state.nextPage-1].answers}
+                            sumar={this.sum}
+                        ></Question>
+                        }
+                    </div>
                 )
             case 10:
                 return(
-                    <Question></Question>
+                    <div>
+                        {!this.state.loading &&
+                        <Question 
+                            //data={this.state} 
+                            page={this.state.nextPage}
+                            question={this.state.questions[this.state.nextPage-1].content}
+                            answers={this.state.questions[this.state.nextPage-1].answers}
+                            sumar={this.sum}
+                        ></Question>
+                        }
+                    </div>
                 )
             case 11:
                 return(
@@ -115,7 +227,6 @@ class Questions2 extends Component{
             return <div>Loading...</div>
         }
     }
-
 }
 
 export default Questions2;

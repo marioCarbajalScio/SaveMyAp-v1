@@ -9,6 +9,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button'
+import FormEmail from './form-email'
 
 class Questions extends Component{
 
@@ -812,6 +813,8 @@ class Questions extends Component{
             //Precio final en el div
             return(
                 <div>
+                    <FormEmail></FormEmail>
+
                    <span>${this.state.value/18} total cost </span> 
                 </div>
                 

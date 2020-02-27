@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import Header from './header/header.js';
 import Col from 'react-bootstrap/Col';
@@ -39,10 +38,10 @@ class Question extends Component{
                             <Row>
                                 <Col md="12">
                                     <Row>
-                                    {this.answers.map((ans,i) =>(
-                                        <Col sm="12" md="12" lg="3">
+                                    {this.state.answers.map((ans,i) =>(
+                                        <Col sm="12" md="12" lg="3" key={i}>
                                             <div className="opt">
-                                                <button className="opt-btn" onClick={(Event)=>(this.props.sum(ans.value))}>{ans.content}</button>
+                                                <button className="opt-btn" onClick={(Event)=>(this.props.sumar(ans.value))}>{ans.content}</button>
                                             </div>
                                         </Col>
                                     ))}
@@ -51,17 +50,6 @@ class Question extends Component{
                             </Row>
                         </Col>
                         <Col md="2"></Col>
-                    </Row>
-                   
-                    <Row>
-                        <Col md="2"></Col>
-                        <Col md="8">
-                        <div className="back-btn-cont">
-                        <center><Link to="/" ><button className="back-btn">Back</button></Link></center>
-                        </div>
-                        </Col>
-                        <Col md="2"></Col>
-
                     </Row>
 
                     <br></br> 
