@@ -42,7 +42,8 @@ class Questions2 extends Component{
 
     //added API func
     componentDidMount(){
-        fetch('http://10.16.0.64:1337/api')
+        //fetch('http://10.16.0.64:3005/api')
+        fetch('http://valuemyappapidev.scio.local/api')
         .then(res => res.json())
         .then((data) => {
             this.setState({questions:data.questions, loading:false})

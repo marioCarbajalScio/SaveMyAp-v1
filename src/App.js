@@ -11,7 +11,6 @@ function App() {
         <Switch>
         <Route exact path='/' component={Home}/>
         <Route exact path='/questions' component={Questions2}/>
-        <Route exact path='/email' component={FormEmail}/>
         </Switch>
         </BrowserRouter>
 
