@@ -18,8 +18,6 @@ class Home extends Component{
                     </div>
                 </div> 
 
-                <Footer></Footer>
-
                 <style>
                     @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
                 </style>

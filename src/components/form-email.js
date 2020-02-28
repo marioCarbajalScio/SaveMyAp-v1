@@ -32,7 +32,7 @@ class FormEmail extends Component {
         <Form onSubmit={sendEmail}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" name="user_email"/>
+            <Form.Control type="email" placeholder="Enter email" name="user_email" required/>
             <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text>
@@ -40,7 +40,7 @@ class FormEmail extends Component {
 
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Name | Company</Form.Label>
-            <Form.Control type="text" placeholder="Enter Company or Name"  name="user_name"/>
+            <Form.Control type="text" placeholder="Enter Company or Name"  name="user_name" required/>
           </Form.Group>
 
           <Form.Group controlId="formBasicTotal" hidden={true}>
