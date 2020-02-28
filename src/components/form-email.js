@@ -15,7 +15,7 @@ class FormEmail extends Component {
   constructor(props){
     super(props)
     this.state={
-        send: true
+        send: false
       };
   }
 
@@ -59,7 +59,7 @@ class FormEmail extends Component {
           <Col></Col>
           <Col></Col>
           <Col>
-          <Link to="/" ><Button variant="secondary" >Home</Button></Link>
+          <Link to="/" ><Button variant="secondary">Home</Button></Link>
           </Col>
           </Row>
         </Form>
@@ -67,6 +67,15 @@ class FormEmail extends Component {
         </Col>
         <Col lg={4} md={4} sm={1} xs={1}></Col>
       </Row>
+      <br></br>
+      {this.state.send &&
+      <Row>
+        <Col></Col>
+        <Col sm={6}>
+        <cente><Alert variant="success">Email sended</Alert></cente>
+        </Col>
+        <Col></Col>
+      </Row>}
       </div>
     );
   }

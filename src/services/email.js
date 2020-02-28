@@ -1,4 +1,5 @@
 import emailjs from 'emailjs-com';
+import swal from 'sweetalert';
 
 const service_id = "smtp_server";//Gmail
 const template_id = "template_XWtRtIZn";//Formato de la api
@@ -19,11 +20,12 @@ export default function sendEmail(e) {//Funcion para mandar email
    emailjs.send(service_id, template_id, template_params, user_id )
    .then((result) => {
       console.log(result.text);
+      swal("Email send!");
   }, (error) => {
       console.log(error.text);
   });
 
-  var template_params2 = {
+  const template_params2 = {
     "from_name": "Scio VMA Notification",
     "name":e.target.user_name.value,
     "email":e.target.user_email.value, 
@@ -34,9 +36,12 @@ export default function sendEmail(e) {//Funcion para mandar email
   emailjs.send(service_id, template_id_scio, template_params2, user_id )
    .then((result) => {
       console.log(result.text);
+      swal("Error sending Email. :c");
   }, (error) => {
       console.log(error.text);
   });
+
+  return true;
 }
 /*
 function sendEmailScio(e){
