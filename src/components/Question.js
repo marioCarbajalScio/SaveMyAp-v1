@@ -7,15 +7,21 @@ import Container from 'react-bootstrap/Container';
 
 class Question extends Component{
 
-    constructor(props){
-        super(props);
-        this.state = {
-            page:this.props.page,
-            value:this.props.value,
-            question:this.props.question,
-            answers:this.props.answers
-        }
+    state = {
+        class:'opt-btn',
+        selected: this.props.select
+        //.opt-btn-selected
     }
+
+    constructor(props){
+        super(props)
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(val,i) {
+        this.props.sumar(val);
+        this.props.seleccionar(i);
+      }
 
     render(){
 
@@ -42,7 +48,7 @@ class Question extends Component{
                                     {this.props.answers.map((ans,i) =>(
                                         <Col sm="12" md="12" lg key={i}>
                                             <div className="opt">
-                                                <button className="opt-btn" onClick={(Event)=>(this.props.sumar(ans.value))}>{ans.content}</button>
+                                                <button className={i == this.props.select ? "opt-btn-selected" : this.state.class} onClick={(Event)=>(this.handleClick(ans.value,i))}>{ans.content}</button>
                                             </div>
                                         </Col>
                                     ))}
@@ -52,9 +58,6 @@ class Question extends Component{
                         </Col>
                         <Col md="2"></Col>
                     </Row>
-
-                    <br></br> 
-                    {this.state.value}
                     </div>
                     </Container>
 

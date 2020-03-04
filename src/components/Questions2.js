@@ -14,6 +14,7 @@ class Questions2 extends Component{
             nextPage:1,
             value:0,
             valores:[0,0,0,0,0,0,0,0,0,0,0],
+            selected:[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
             questions: [],
             loading: true
         };
@@ -37,6 +38,10 @@ class Questions2 extends Component{
 
      cambiarPagina=(n)=>{
         this.setState({nextPage:n})
+    }
+
+    guardarRespuesta=(n)=>{
+        this.state.selected[this.state.nextPage]=n;
     }
 
     //added API func
@@ -63,6 +68,8 @@ class Questions2 extends Component{
                             question={this.state.questions[this.state.nextPage-1].content}
                             answers={this.state.questions[this.state.nextPage-1].answers}
                             sumar={this.sum}
+                            seleccionar={this.guardarRespuesta}
+                            select={this.state.selected[this.state.nextPage]}
                         ></Question>
                         <Row>
                             <Col md="2"></Col>
@@ -95,6 +102,8 @@ class Questions2 extends Component{
                             question={this.state.questions[this.state.nextPage-1].content}
                             answers={this.state.questions[this.state.nextPage-1].answers}
                             sumar={this.sum}
+                            seleccionar={this.guardarRespuesta}
+                            select={this.state.selected[this.state.nextPage]}
                         ></Question>
                         <Row>
                             <Col md="2"></Col>
