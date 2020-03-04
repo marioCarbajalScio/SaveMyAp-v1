@@ -6,9 +6,9 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Alert from 'react-bootstrap/Alert'
 
 import Header from './header/header'
+import swal from 'sweetalert';
 
 class FormEmail extends Component {
 
@@ -17,6 +17,23 @@ class FormEmail extends Component {
     this.state={
         send: false
       };
+      this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.setState({send:true})
+    const data = new FormData(event.target);
+    const response = sendEmail(data).then(()=> {
+      if(response){
+        swal("Email sended.");
+      }
+      else{
+        swal("Error sending Email. :c");
+        this.setState({send:false})
+      }
+        
+    })
   }
 
   render(){
@@ -29,10 +46,10 @@ class FormEmail extends Component {
           <h1 className="body-title">We're almost done</h1>
           <h2 className="total-price">Your app total cost :<br></br>${this.props.val}.00 </h2>
           <p className="body-text">Please complete this form below to send an email with your cost and keep contact</p>
-        <Form onSubmit={sendEmail}>
+        <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" name="user_email" required/>
+            <Form.Control type="email" placeholder="Enter email" name="user_email" required disabled={this.state.send}/>
             <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text>
@@ -40,7 +57,7 @@ class FormEmail extends Component {
 
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Name | Company</Form.Label>
-            <Form.Control type="text" placeholder="Enter Company or Name"  name="user_name" required/>
+            <Form.Control type="text" placeholder="Enter Company or Name"  name="user_name" required disabled={this.state.send}/>
           </Form.Group>
 
           <Form.Group controlId="formBasicTotal" hidden={true}>
@@ -50,9 +67,11 @@ class FormEmail extends Component {
 
           <Row>
           <Col>
-         <Button variant="primary" type="submit" value="Send">
+         
+          <Button variant="primary" type="submit" disabled={this.state.send}>
               Submit
-            </Button>
+          </Button>
+          
           </Col>
           <Col></Col>
           <Col></Col>
@@ -67,15 +86,7 @@ class FormEmail extends Component {
         </Col>
         <Col lg={4} md={4} sm={1} xs={1}></Col>
       </Row>
-      <br></br>
-      {this.state.send &&
-      <Row>
-        <Col></Col>
-        <Col sm={6}>
-        <cente><Alert variant="success">Email sended</Alert></cente>
-        </Col>
-        <Col></Col>
-      </Row>}
+
       </div>
     );
   }

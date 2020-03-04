@@ -18,7 +18,7 @@ class Question extends Component{
     }
 
     render(){
-    const {question}=this.props;
+
     return(
         <div>
             <Header></Header>
