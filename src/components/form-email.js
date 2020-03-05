@@ -10,6 +10,8 @@ import Col from 'react-bootstrap/Col'
 import Header from './header/header'
 import swal from 'sweetalert';
 
+import { Redirect } from 'react-router-dom'
+
 class FormEmail extends Component {
 
   constructor(props){
@@ -24,9 +26,12 @@ class FormEmail extends Component {
     event.preventDefault();
     this.setState({send:true})
     const data = new FormData(event.target);
-    const response = sendEmail(data).then(()=> {
+    //console.log(data.getAll())
+    const response = sendEmail(data,this.props.val).then(()=> {
       if(response){
-        swal("Email sended.");
+        swal("Email sended.").then(() => {
+          window.location.reload()
+        });
       }
       else{
         swal("Error sending Email. :c");

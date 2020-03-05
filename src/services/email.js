@@ -7,7 +7,7 @@ const user_id = 'user_rwpKTbKkkCAKLMLlzZhJd';
 const email_scio="macarbajal@sciodev.com"
 
 //Funcion para mandar email
-export default async function sendEmail(e) {
+export default async function sendEmail(e,total) {
 
   var nextEmail = true;
 
@@ -15,7 +15,7 @@ export default async function sendEmail(e) {
     "from_name": "Scio | End-to-end Software Engineering ",
     "name":e.get('user_name'),
     "email":e.get('user_email'), //Correo al que se mandara la info
-    "message_html": "$"+e.get('value') //La info de interes sobre el costo
+    "message_html": "$"+total //La info de interes sobre el costo
    }
 
    await emailjs.send(service_id, template_id, template_params, user_id )
@@ -32,12 +32,11 @@ export default async function sendEmail(e) {
     "name":e.get('user_name'),
     "email":e.get('user_email'), 
     "email_scio": email_scio,
-    "message_html": "$"+e.get('value')
+    "message_html": "$"+total
    }
 
    await emailjs.send(service_id, template_id_scio, template_params2, user_id )
    .then((result) => {
-      //console.log(result.text);
       nextEmail = true
   }, (error) => {
     nextEmail = false
@@ -50,41 +49,3 @@ export default async function sendEmail(e) {
   }
     
 }
-
-/*
-export default function sendEmail(e) {
-  console.log(e)
-  e.preventDefault();
-  const template_params = {
-    "from_name": "Scio | End-to-end Software Engineering ",
-    "name":e.target.user_name.value,
-    "email":e.target.user_email.value, //Correo al que se mandara la info
-    "message_html": "$"+e.target.total.value //La info de interes sobre el costo
-   }
-
-   emailjs.send(service_id, template_id, template_params, user_id )
-   .then((result) => {
-      console.log(result.text);
-      swal("Email send!");
-  }, (error) => {
-      console.log(error.text);
-      swal("Error sending Email. :c");
-  });
-
-  const template_params2 = {
-    "from_name": "Scio VMA Notification",
-    "name":e.target.user_name.value,
-    "email":e.target.user_email.value, 
-    "email_scio": email_scio,
-    "message_html": "$ "+e.target.total.value 
-   }
-
-  emailjs.send(service_id, template_id_scio, template_params2, user_id )
-   .then((result) => {
-      console.log(result.text);
-      return true;
-  }, (error) => {
-      console.log(error.text);
-  });
-  
-}*/
