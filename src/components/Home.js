@@ -10,8 +10,8 @@ class Home extends Component{
                 <Header></Header>
 
                 <div className="body">
-                    <h1 className="body-title">How much does my app cost?</h1>
-                    <p className="body-text">This website is going to help you to calculate the total price of your next App</p>
+                    <h1 className="body-title">What is my app estimated cost?</h1>
+                    <p className="body-text">This website is going to help you to calculate the total estimated value of your next App</p>
                     <div className="buttons">
                     <Link to='/questions'><button className="back-btn">Start</button></Link>
                     </div>

@@ -20,13 +20,13 @@ class FormEmail extends Component {
         send: false
       };
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.comas = this.comas.bind(this);
   }
 
   handleSubmit(event) {
     event.preventDefault();
     this.setState({send:true})
     const data = new FormData(event.target);
-    //console.log(data.getAll())
     const response = sendEmail(data,this.props.val).then(()=> {
       if(response){
         swal("Email sended.").then(() => {
@@ -41,6 +41,10 @@ class FormEmail extends Component {
     })
   }
 
+  comas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   render(){
     return (
       <div>
@@ -49,8 +53,8 @@ class FormEmail extends Component {
         <Col lg={4} md={4} sm={1} xs={1}></Col>
         <Col lg={4} md={4} sm={10} xs={10}>
           <h1 className="body-title">We're almost done</h1>
-          <h2 className="total-price">Your app total cost :<br></br>${this.props.val}.00 </h2>
-          <p className="body-text">Please complete this form below to send an email with your cost and keep contact</p>
+          <h2 className="total-price">Your app estimated value :<br></br>${this.comas(this.props.val)} </h2>
+          <p className="body-text">Please complete this form below to send an email with info about your app.</p>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
