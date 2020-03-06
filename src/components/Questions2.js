@@ -16,6 +16,7 @@ class Questions2 extends Component{
             valores:[0,0,0,0,0,0,0,0,0,0,0],
             selected:[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
             questions: [],
+            ans:[],
             loading: true
         };
     }
@@ -40,8 +41,9 @@ class Questions2 extends Component{
         this.setState({nextPage:n})
     }
 
-    guardarRespuesta=(n)=>{
+    guardarRespuesta=(n,res)=>{
         this.state.selected[this.state.nextPage]=n;
+        this.state.ans[this.state.nextPage]=res;
     }
 
     //added API func
@@ -120,7 +122,10 @@ class Questions2 extends Component{
                 )
             case 11:
                 return(
-                    <FromEmail val={this.state.value}></FromEmail>
+                    <div>
+                        <FromEmail val={this.state.value} def={this.state.ans} back={this.rest}></FromEmail>
+                    </div>
+                    
                 )
             }
         }else{

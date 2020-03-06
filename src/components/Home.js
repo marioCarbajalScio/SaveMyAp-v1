@@ -11,7 +11,7 @@ class Home extends Component{
 
                 <div className="body">
                     <h1 className="body-title">What is my app estimated cost?</h1>
-                    <p className="body-text">This website is going to help you to calculate the total estimated value of your next App</p>
+                    <p className="body-text">Please answer the next 10 questions requested to help us begin to understand <br></br>  the nature of your project and at the end, you will receive an estimated cost of developing your app.</p>
                     <div className="buttons">
                     <Link to='/questions'><button className="back-btn">Start</button></Link>
                     </div>

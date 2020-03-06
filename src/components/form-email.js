@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import sendEmail from '../services/email';
+//import sendEmail from '../services/nodeMail';
 
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
@@ -9,8 +10,6 @@ import Col from 'react-bootstrap/Col'
 
 import Header from './header/header'
 import swal from 'sweetalert';
-
-import { Redirect } from 'react-router-dom'
 
 class FormEmail extends Component {
 
@@ -21,13 +20,14 @@ class FormEmail extends Component {
       };
       this.handleSubmit = this.handleSubmit.bind(this);
       this.comas = this.comas.bind(this);
+      this.regresar = this.regresar.bind(this);
   }
 
   handleSubmit(event) {
     event.preventDefault();
     this.setState({send:true})
     const data = new FormData(event.target);
-    const response = sendEmail(data,this.props.val).then(()=> {
+    const response = sendEmail(data,this.props.val,this.props.def).then(()=> {
       if(response){
         swal("Email sended.").then(() => {
           window.location.reload()
@@ -45,6 +45,10 @@ class FormEmail extends Component {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
+  regresar(){
+    this.props.back();
+  }
+
   render(){
     return (
       <div>
@@ -54,7 +58,7 @@ class FormEmail extends Component {
         <Col lg={4} md={4} sm={10} xs={10}>
           <h1 className="body-title">We're almost done</h1>
           <h2 className="total-price">Your app estimated value :<br></br>${this.comas(this.props.val)} </h2>
-          <p className="body-text">Please complete this form below to send an email with info about your app.</p>
+          <p className="body-text">Please complete this form below to send an email with info about your app.<br></br> We will contact you ass soon as posible.</p>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
@@ -77,8 +81,8 @@ class FormEmail extends Component {
           <Row>
           <Col>
          
-          <Button variant="primary" type="submit" disabled={this.state.send}>
-              Submit
+         <Button variant="secondary" onClick={this.regresar} disabled={this.state.send}>
+              Back
           </Button>
           
           </Col>
@@ -87,7 +91,7 @@ class FormEmail extends Component {
           <Col></Col>
           <Col></Col>
           <Col>
-          <Link to="/" ><Button variant="secondary">Home</Button></Link>
+          <Button variant="primary" type="submit">Submit</Button>
           </Col>
           </Row>
         </Form>
@@ -95,7 +99,6 @@ class FormEmail extends Component {
         </Col>
         <Col lg={4} md={4} sm={1} xs={1}></Col>
       </Row>
-
       </div>
     );
   }

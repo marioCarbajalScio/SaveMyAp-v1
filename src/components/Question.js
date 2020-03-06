@@ -11,7 +11,6 @@ class Question extends Component{
         class:'opt-btn',
         class2:"opt-btn-selected",
         selected: this.props.select
-        //.opt-btn-selected
     }
 
     constructor(props){
@@ -19,9 +18,9 @@ class Question extends Component{
         this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick(val,i) {
+    handleClick(val,i,ans) {
         this.props.sumar(val);
-        this.props.seleccionar(i);
+        this.props.seleccionar(i,ans);
       }
 
     render(){
@@ -49,7 +48,7 @@ class Question extends Component{
                                     {this.props.answers.map((ans,i) =>(
                                         <Col sm="12" md="12" lg key={i}>
                                             <div className="opt">
-                                                <button className={i === this.props.select ? this.state.class2 : this.state.class} onClick={(Event)=>(this.handleClick(ans.value,i))}>{ans.content}</button>
+                                                <button className={i === this.props.select ? this.state.class2 : this.state.class} onClick={(Event)=>(this.handleClick(ans.value,i,ans.content))}>{ans.content}</button>
                                             </div>
                                         </Col>
                                     ))}

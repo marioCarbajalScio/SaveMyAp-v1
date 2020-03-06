@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color: #e3e3e3;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Mockup</title>
+</head>
+
+<body style="background-color: #e3e3e3;" >
+    <table border="0" cellpadding="0" cellspacing="0" style="max-width: 602px; width: 100%;" align="center">
+        <!-- SCIO Header-->
+        <tr>
+            <td style="background-color: #ffffff; padding: 15px; " align="left">
+        <!--           <img src="https://ii.ct-stc.com/2/logos/empresas/2017/02/28/scio-consulting-sc-B6A99E5170EAF38E152336thumbnail.jpeg" alt="" style="max-width: 120px; width: 120px;">-->
+            </td>
+        </tr>
+        <!-- end of Scio Header-->
+        <!-- Scio initial banner-->
+        <tr>
+            <td style="padding: 30px; background-color: #0087ff; background-size: cover; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" 
+            align="center" valign="middle">
+
+            <!--<td style="padding: 30px; background-color: #0087ff; background-image: url(https://hr.sciosites.com/wp-content/uploads/sites/3/2017/03/Looking-to-build-an-application-We-can-help.jpg); background-size: cover; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"
+                align="center" valign="middle">-->
+                <h1 style="color: #ffffff; font-weight: 700; font-size: 50px;">¡ Hello <strong>{{name}}</strong> ! <br> Thank you for using Scio's VMA </h1>
+            </td>
+        </tr>
+        <!-- end of Scio initial banner-->
+        <!-- Email Body -->
+        <tr>
+            <td style="background-color: #ffffff; padding-top: 20px;">
+                <h2 style="color: #0087ff; font-family: 'Open Sans', sans-serif; padding-bottom: 10px;" align="center"> Your app total estimated price:
+                </h2>
+                <center><div style="color: #ffffff; font-size: 40px; font-family: 'Open Sans', 
+                sans-serif; padding: 10px; background-color: #0087ff; width: 50%; border-radius: 5px;" align="center">
+                     <strong>{{message_html}}</strong>
+                </div>
+                </center>
+                <br>
+
+                <center>
+                <p style="color: #a3a3a3; font-family: 'Open Sans', sans-serif;" align="center">
+                    <strong>App definition:</strong><br>
+                    {{questions}}:{{answers}}
+                </p>
+                </center>
+
+                <p style="color: #a3a3a3; font-family: 'Open Sans', sans-serif;" align="center">
+                    <strong>United States</strong><br> <strong> Local:</strong> +1 (512) 538 0512 <strong> <br> Troll free:</strong> +1 (800) 642 6134<br><br>
+                </p>
+                
+            </td>
+        </tr>
+        <!-- end of Email Body -->
+        
+        <tr>
+            <td style="background-color: #0087ff;">
+                <p style="color: #ffffff; text-align: center; font-family: sans-serif; font-size: 12px;">Copyright © 2003-2020 · All Rights Reserved · Scio Consulting International, LLC</p>
+            </td>
+        </tr>
+    </table>
+
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+</body>
+
+
+
+</html>

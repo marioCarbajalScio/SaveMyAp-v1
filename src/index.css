@@ -97,7 +97,7 @@ code {
     border-radius: 10px;
     cursor: pointer;
     width: 120%;
-    max-width: 300px;
+    max-width: 200px;
     height: 120px;
     transition: transform 0.3s ease;
     background-color: transparent;
@@ -118,15 +118,18 @@ code {
     border-radius: 10px;
     cursor: pointer;
     width: 120%;
-    max-width: 300px;
+    max-width: 200px;
     height: 120px;
     transition: transform 0.3s ease;
     border: 1px solid;
     border-color: #0087ff;
 
-    transform: translateY(-5px);
     background-color: #0087ff;
     color: #ffffff;
+}
+
+.opt-btn-selected:hover {
+    transform: translateY(-5px);
 }
 
 .back-btn-cont {
