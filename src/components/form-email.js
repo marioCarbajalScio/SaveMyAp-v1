@@ -30,7 +30,8 @@ class FormEmail extends Component {
     const response = sendEmail(data,this.props.val,this.props.def).then(()=> {
       if(response){
         swal("Email sended.").then(() => {
-          window.location.reload()
+          //window.location.reload()
+          window.location.href = "http://valuemyappdev.scio.local";
         });
       }
       else{
@@ -58,7 +59,7 @@ class FormEmail extends Component {
         <Col lg={4} md={4} sm={10} xs={10}>
           <h1 className="body-title">We're almost done</h1>
           <h2 className="total-price">Your app estimated value :<br></br>${this.comas(this.props.val)} </h2>
-          <p className="body-text">Please complete this form below to send an email with info about your app.<br></br> We will contact you ass soon as posible.</p>
+          <p className="body-text">Please complete this form below to send an email with info about your app.<br></br> We will contact you as soon as possible.</p>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
